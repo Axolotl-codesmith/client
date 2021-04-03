@@ -36,6 +36,27 @@
     width: 100px;
     height: 100px;
 }
+  
+.dogIcon {
+    animation-name: wiggle;
+    animation-delay: 5000ms;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes wiggle {
+    0% {transform: rotate(0deg);}
+    10% {transform: rotate(20deg);}
+    20% {transform: rotate(0deg);}
+    30% {transform: rotate(-20deg);}
+    40% {transform: rotate(0deg);}
+    50% {transform: rotate(20deg);}
+    60% {transform: rotate(0deg);}
+    70% {transform: rotate(-20deg);}
+    80% {transform: rotate(0deg);}
+    90% {transform: rotate(0deg);}
+    100% {transform: rotate(0deg);}
+  }
 
 .signInButtonGroup{
     margin: 5px;

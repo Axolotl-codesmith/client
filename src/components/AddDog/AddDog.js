@@ -136,7 +136,6 @@ const AddDog = withStyles(styles)((props) => {
             onChange={(e) => handleFormChange(e, 'description')}
           />
         </div>
-
         <div className="addDogFormGroup">
           <TextField
             className="addDogForm"
@@ -165,7 +164,7 @@ const AddDog = withStyles(styles)((props) => {
               className="addDogSelect"
               style={{ color: 'black', backgroundColor: '#fff8e7', height: '50px' }}
               label="Age"
-              inputProps={{ name: 'age' }}
+              inputProps={{ name: 'Age' }}
               onChange={(e) => onSelectChange(e, 'age')}
             >
               {/* {ageList()} */}
@@ -195,7 +194,7 @@ const AddDog = withStyles(styles)((props) => {
         </div>
 
         {/* SWITCHES */}
-        <div className="switchWrapper">
+        <div className="addDogSwitchWrapper">
           <div className="switchRow">
             <FormControlLabel
               labelPlacement="start"

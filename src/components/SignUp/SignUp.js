@@ -16,10 +16,11 @@ const styles = (theme) => ({
 });
 
 const SignUp = withStyles(styles)((props) => {
-  console.log(props);
+  console.log(props.addUserId);
   const { classes } = props;
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [zipCode, setZipcode] = React.useState('');
   const [children, setChildren] = React.useState(false);
   const [cat, setCat] = React.useState(false);
   const [neutered, setNeutered] = React.useState(false);
@@ -34,6 +35,9 @@ const SignUp = withStyles(styles)((props) => {
     }
     if (type === 'password') {
       setPassword(e.target.value);
+    }
+    if (type === 'zipcode') {
+      setZipcode(e.target.value);
     }
   };
 
@@ -58,10 +62,7 @@ const SignUp = withStyles(styles)((props) => {
     }
   };
 
-  console.log(email);
-  console.log(password);
-
-  const onSubmit = (props) => {
+  const onSubmit = () => {
     fetch('http://localhost:3001/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -78,13 +79,17 @@ const SignUp = withStyles(styles)((props) => {
           special_needs: specialNeeds,
           shots_current: shots,
         },
+        location : {
+          zipcode: zipCode
+        }
       }),
 
     })
-      .catch((err) = console.log(err))
+      //.catch((err) = console.log(err))
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        props.addUserId(res.id)
       });
   };
 
@@ -109,6 +114,16 @@ const SignUp = withStyles(styles)((props) => {
         InputProps={{ className: classes.input }}
         InputLabelProps={{ shrink: true }}
         onChange={(e) => handleFormChange(e, 'password')}
+      />
+      <TextField
+        className="signUpForm"
+        label="Zip Code"
+        variant="filled"
+        size="small"
+        height="50%"
+        InputProps={{ className: classes.input }}
+        InputLabelProps={{ shrink: true }}
+        onChange={(e) => handleFormChange(e, 'zipcode')}
       />
 
       {/* **********************SWITCHES************************************* */}
